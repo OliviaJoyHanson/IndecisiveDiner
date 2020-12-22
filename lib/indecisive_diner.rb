@@ -1,8 +1,7 @@
-# frozen_string_literal: true
+require 'open-uri'
+require 'nokogiri'
+require 'pry'
 
-require_relative "indecisive_diner/version"
-
-module IndecisiveDiner
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./daily_deal/version"
+require_relative './daily_deal/deal'
+require_relative './daily_deal/cli'
