@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "daily_deal"
+require "indecisive_diner"
 
-DailyDeal::CLI.new.call
+IndecisiveDiner::CLI.new.call

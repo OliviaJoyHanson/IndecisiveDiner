@@ -1,4 +1,4 @@
-class DailyDeal::Restaurant
+class IndecisiveDiner::Restaurant
     # attr_accessor :name, :price, :availability, :url
   
     # def self.today

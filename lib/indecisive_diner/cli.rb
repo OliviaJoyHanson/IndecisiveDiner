@@ -1,5 +1,7 @@
-class DailyDeal::CLI
-
+class IndecisiveDiner::CLI
+    def call
+        puts "waddaaaap"
+    end
     # def call
     #   list_deals
     #   menu
