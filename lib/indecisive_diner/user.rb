@@ -1,3 +1,3 @@
-class User 
+class IndecisiveDiner::User
 
 end 

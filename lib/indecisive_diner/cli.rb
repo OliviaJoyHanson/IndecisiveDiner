@@ -1,7 +1,16 @@
 class IndecisiveDiner::CLI
     def call
-        puts "waddaaaap"
+        puts "Welcome, you Indecisive Diner!"
+        restaurants
+        menu
     end
+
+    def sampled_restaurant 
+
+        @restaurant = IndecisiveDiner::Restaurant.sample
+    end 
+
+    
     # def call
     #   list_deals
     #   menu
