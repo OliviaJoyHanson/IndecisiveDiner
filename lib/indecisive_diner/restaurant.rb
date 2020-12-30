@@ -1,17 +1,40 @@
 class IndecisiveDiner::Restaurant
   attr_accessor :name, :cuisine, :rating, :link
     
+  @all = []
+
+
     def self.sample
-      @name = "BakerStreet"
-      @cuisine = "Contemporary American"
-      @rating = "4.8/5 stars"
-      @link = "https://www.opentable.com/bakerstreet?corrid=43cdb721-2ee5-4458-a691-0e0e57d0483b&avt=eyJ2IjoyLCJtIjoxLCJwIjowLCJzIjowLCJuIjowfQ&p=2&sd=2020-12-20T19%3A00%3A00"
-      puts <<-DOC
-        BakerStreet
-        Cuisine: Contemporary American
-        Rating: 4.8/5 stars
+      sampled_restaurant = scraped_restaurants.sample
+      puts <<-DOC 
+        #{sampled_restaurant.name}
+        #{sampled_restaurant.cuisine}
+        #{sampled_restaurant.rating}
+        #{sampled_restaurant.link}
       DOC
+      # @name = "BakerStreet"
+      # @cuisine = "Contemporary American"
+      # @rating = "4.8/5 stars"
+      # @link = "https://www.opentable.com/bakerstreet?corrid=43cdb721-2ee5-4458-a691-0e0e57d0483b&avt=eyJ2IjoyLCJtIjoxLCJwIjowLCJzIjowLCJuIjowfQ&p=2&sd=2020-12-20T19%3A00%3A00"
+
+      # puts <<-DOC
+      #   #{@name}
+      #   Cuisine: #{@cuisine}
+      #   Rating: #{@rating}
+      # DOC
     end
+
+    def scraped_restaurants 
+      @all
+    end 
+
+    def scraper(location)
+      scraped = [["bakerstreet", "contemporary american", "4.8", "link1"], ["Nawa", "asian fusion", "5", "link2"]]
+      
+      scraped.each do |restaurant|
+        scraped_restuarants << Restaurant.new(restaurant[0], restaurant[1], restaurant[2], resaurant[3])
+      end 
+    end 
   
 
 

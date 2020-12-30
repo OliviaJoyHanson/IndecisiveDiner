@@ -1,3 +1,4 @@
+require 'pry'
 class IndecisiveDiner::CLI
     def call
         puts "Welcome, you Indecisive Diner!"
@@ -8,6 +9,7 @@ class IndecisiveDiner::CLI
         #@user = User.new(@name, @location)
         sampled_restaurant
         menu
+        goodbye
     end
 
     def sampled_restaurant 
@@ -20,22 +22,26 @@ class IndecisiveDiner::CLI
     end 
 
     def menu 
+        puts "Wanna eat here? [yes, no, exit]"
         input = nil 
-        until input == "exit"
-            puts "Wanna eat here? [yes, no, exit]"
+        while input != "exit"
             input = gets.strip.downcase
             if input == "yes"
                 puts "Let's make a reservation!"
-                restaurant_link
+                puts restaurant_link
             elsif input == "no"
                 puts "Let's spin again!"
                 puts "Spinning wheel..."
                 sampled_restaurant
-                menu
+                puts "Wanna eat here? [yes, no, exit]"
             else
                 puts "Didn't quite get that... type yes, no, or exit"
             end 
         end
+    end 
+
+    def goodbye 
+        "See you next time, #{@name}!"
     end 
 
     # def call
