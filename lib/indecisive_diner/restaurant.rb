@@ -1,4 +1,15 @@
 class IndecisiveDiner::Restaurant
+    
+    def sampled 
+      puts <<-DOC
+        BakerStreet
+        Cuisine: Contemporary American
+        Rating: 4.8/5 stars
+      DOC
+    end
+  
+
+
     # attr_accessor :name, :price, :availability, :url
   
     # def self.today

@@ -1,6 +1,10 @@
 class IndecisiveDiner::CLI
     def call
         puts "Welcome, you Indecisive Diner!"
+        puts "What's your name?"
+        @name = gets.strip.downcase
+        puts "What's your location?"
+        @location = gets.strip.downcase
         restaurants
         menu
     end
@@ -10,7 +14,10 @@ class IndecisiveDiner::CLI
         @restaurant = IndecisiveDiner::Restaurant.sample
     end 
 
-    
+    def menu 
+
+    end 
+
     # def call
     #   list_deals
     #   menu
