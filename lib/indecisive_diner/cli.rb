@@ -5,7 +5,8 @@ class IndecisiveDiner::CLI
         @name = gets.strip.downcase
         puts "What's your location?"
         @location = gets.strip.downcase
-        restaurants
+        #@user = User.new(@name, @location)
+        sampled_restaurant
         menu
     end
 
@@ -14,8 +15,27 @@ class IndecisiveDiner::CLI
         @restaurant = IndecisiveDiner::Restaurant.sample
     end 
 
-    def menu 
+    def restaurant_link 
+        @restaurant.link
+    end 
 
+    def menu 
+        input = nil 
+        until input == "exit"
+            puts "Wanna eat here? [yes, no, exit]"
+            input = gets.strip.downcase
+            if input == "yes"
+                puts "Let's make a reservation!"
+                restaurant_link
+            elsif input == "no"
+                puts "Let's spin again!"
+                puts "Spinning wheel..."
+                sampled_restaurant
+                menu
+            else
+                puts "Didn't quite get that... type yes, no, or exit"
+            end 
+        end
     end 
 
     # def call
