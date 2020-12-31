@@ -15,7 +15,7 @@ class IndecisiveDiner::Restaurant
   def self.sampled(location)
     scraped = IndecisiveDiner::Scraper.scrape(location)
     sampled_restaurant = scraped.sample
-    sampled_restaurent
+    sampled_restaurant
     # @name = "BakerStreet"
     # @cuisine = "Contemporary American"
     # @rating = "4.8/5 stars"

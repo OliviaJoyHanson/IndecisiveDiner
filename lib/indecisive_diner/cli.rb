@@ -13,18 +13,17 @@ class IndecisiveDiner::CLI
     end
 
     def sampled_restaurant 
-        binding.pry
         @sampled_restaurant = IndecisiveDiner::Restaurant.sampled(@location)
         puts <<-DOC 
-        #{sampled_restaurant.name}
-        #{sampled_restaurant.cuisine}
-        #{sampled_restaurant.rating}
-        #{sampled_restaurant.link}
+        #{@sampled_restaurant.name}
+        #{@sampled_restaurant.cuisine}
+        #{@sampled_restaurant.rating}
+        #{@sampled_restaurant.link}
         DOC
     end 
 
     def restaurant_link 
-        @restaurant.link
+        @sampled_restaurant.link
     end 
 
     def menu 
