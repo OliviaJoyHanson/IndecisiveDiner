@@ -14,7 +14,7 @@ class IndecisiveDiner::CLI
 
     def sampled_restaurant 
 
-        @restaurant = IndecisiveDiner::Restaurant.sample
+        @restaurant = IndecisiveDiner::Restaurant.sampled
     end 
 
     def restaurant_link 

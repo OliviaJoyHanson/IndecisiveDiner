@@ -1,0 +1,3 @@
+class IndecisiveDiner::Scraper 
+
+end 
