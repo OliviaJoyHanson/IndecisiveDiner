@@ -8,18 +8,32 @@ class IndecisiveDiner::Scraper
         # if location.length > 1
         doc = Nokogiri::HTML(URI.open("https://www.opentable.com/nearby/restaurants-near-me-fort-wayne"))
 
-        rest_box = doc.css("#mainContent div._3kGTRpUBze6qgm9OggF-31 div._2AVylkZna9eBnqoELI42uw div._2ZhFCF4LhPo6lVjuKJPqt- div[data-test]")
-
+        rest_cards = doc.css("._2ZhFCF4LhPo6lVjuKJPqt-")
         binding.pry
-        
-        scraped = [["bakerstreet", "contemporary american", "4.8", "link1"], ["Nawa", "asian fusion", "5", "link2"]]
         @scraped_restaurants = []
-        scraped.each do |restaurant|
+
+        rest_cards.each do |card|
+            # binding.pry
             
-            @scraped_restaurants << IndecisiveDiner::Restaurant.new(restaurant[0], restaurant[1], restaurant[2], restaurant[3])
+            # binding.pry
+            # <div class="_1HpaBjJWDwElwdkD3OKS7J"><a href="https://www.opentable.com/r/red-lobster-fort-wayne?corrid=2994a1cb-4437-4fe3-a4cd-9ce19011b785&amp;avt=eyJ2IjoyLCJtIjoxLCJwIjowLCJzIjowLCJuIjowfQ&amp;p=2&amp;sd=2021-01-02T19%3A00%3A00" class="_1e9PcCDb012hY4BcGfraQB" data-test="res-card-name" aria-label="Red Lobster - Fort Wayne restaurant" target="_blank" rel="noopener noreferrer"><h6 class="k8o46Bca35RzHNtQFy3bH">1. <!-- -->Red Lobster - Fort Wayne</h6></a></div>
+            card.each do |rest|
+            name = rest.css("._3uVfVbI1iLfMbszbU6KoOL .k8o46Bca35RzHNtQFy3bH").text
+                # name = rest.css("div._17v75S2htyk61cW3_VXibj div._1liK37RaUN7lnBs9g1TPyp div._1HpaBjJWDwElwdkD3OKS7J").text
+
+                # binding.pry
+            end
+        end 
+        
+        
+        # scraped = [["bakerstreet", "contemporary american", "4.8", "link1"], ["Nawa", "asian fusion", "5", "link2"]]
+        
+        # scraped.each do |restaurant|
+            
+        #     @scraped_restaurants << IndecisiveDiner::Restaurant.new(restaurant[0], restaurant[1], restaurant[2], restaurant[3])
              
             
-        end
+        # end
         @scraped_restaurants 
     end 
 end 
