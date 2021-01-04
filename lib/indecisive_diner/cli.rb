@@ -8,6 +8,8 @@ class IndecisiveDiner::CLI
         @location = gets.strip.downcase
         if @location.split(/\s+/).length > 1
             @location = @location.split(/\s+/)
+        else
+            @location = [@location]
         end
         # binding.pry
         if !IndecisiveDiner::Scraper.location_check(@location)

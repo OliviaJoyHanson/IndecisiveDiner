@@ -5,7 +5,9 @@ require 'open-uri'
 class IndecisiveDiner::Scraper 
 
     def self.location_check(location)
-        @doc = Nokogiri::HTML(URI.open("https://www.opentable.com/nearby/restaurants-near-me-fort-wayne"))
+        if location.length <2
+            @doc = Nokogiri::HTML(URI.open("https://www.opentable.com/nearby/restaurants-near-me-#{location.join}"))
+        end 
     end 
 
     def self.scrape(location)
