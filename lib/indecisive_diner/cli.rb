@@ -15,35 +15,54 @@ class IndecisiveDiner::CLI
 
     def sampled_restaurant 
         @sampled_restaurant = IndecisiveDiner::Restaurant.sampled(@location)
-        puts <<-DOC 
+        puts <<-DOC.gsub(/^\s+/, "")
         #{@sampled_restaurant.name}
         #{@sampled_restaurant.cuisine}
         #{@sampled_restaurant.rating}
-        #{@sampled_restaurant.link}
         DOC
     end 
 
     def restaurant_link 
-        @sampled_restaurant.link
+        puts "#{@sampled_restaurant.link}"
     end 
 
     def menu 
         puts "Wanna eat here? [yes, no, exit]"
         input = nil 
-        while input != "exit"
-            input = gets.strip.downcase
-            if input == "yes"
-                puts "Let's make a reservation!"
-                puts restaurant_link
-            elsif input == "no"
+        until input == "exit"
+            input = gets.strip.downcase 
+            if input == "no"
                 puts "Let's spin again!"
-                puts "Spinning wheel..."
+                puts "Spinning wheel"
+                count = 0
+                until count == 3
+                    sleep 1
+                    puts "."
+                       count +=1
+                  end
+                # !!! PUT TIMER HERE
                 sampled_restaurant
                 puts "Wanna eat here? [yes, no, exit]"
-            elsif input != "no" || input != "yes" || input != "exit"
-                puts "Didn't quite get that... type yes, no, or exit"
-            end 
-        end
+            elsif input == "yes"
+                puts "Let's make a reservation!"
+                restaurant_link
+                puts "[type exit]"
+            end
+        end 
+        # while input != "exit"
+        #     input = gets.strip.downcase
+        #     if input == "yes"
+        #         puts "Let's make a reservation!"
+        #         puts restaurant_link
+        #     elsif input == "no"
+        #         puts "Let's spin again!"
+        #         puts "Spinning wheel..."
+        #         sampled_restaurant
+        #         puts "Wanna eat here? [yes, no, exit]"
+        #     elsif input != "no" || input != "yes" || input != "exit"
+        #         puts "Didn't quite get that... type yes, no, or exit"
+        #     end 
+        # end
     end 
 
     def goodbye 
