@@ -6,10 +6,17 @@ class IndecisiveDiner::CLI
         @name = gets.strip
         puts "What's your location?"
         @location = gets.strip.downcase
-        # if @location.split(/\s+/).length > 1
-        #     @location.split(/\s+/)
-        # end
-        # if @IndecisiveDiner::Scraper.scrape(@location).length < 2
+        if @location.split(/\s+/).length > 1
+            @location = @location.split(/\s+/)
+        end
+        # binding.pry
+        if !IndecisiveDiner::Scraper.scrape_url(@location)
+            puts "We can't seem to find your location, please enter full location name."
+            @location =gets.strip.downcase
+            if @location.split(/\s+/).length > 1
+                @location.split(/\s+/)
+            end
+        end 
         # binding.pry
         #@user = User.new(@name, @location)
         sampled_restaurant

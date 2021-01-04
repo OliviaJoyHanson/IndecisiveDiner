@@ -4,13 +4,15 @@ require 'open-uri'
 
 class IndecisiveDiner::Scraper 
 
-    # def self.scrape_url(location)
+    def self.scrape_url_check(location)
+        @doc = Nokogiri::HTML(URI.open("https://www.opentable.com/nearby/restaurants-near-me-fort-wayne"))
+    end 
 
     def self.scrape(location)
         # if location.length > 1
-        doc = Nokogiri::HTML(URI.open("https://www.opentable.com/nearby/restaurants-near-me-fort"))
-        binding.pry
-        rest_cards = doc.css('div[data-test="restaurant-cards"]')
+        @doc = Nokogiri::HTML(URI.open("https://www.opentable.com/nearby/restaurants-near-me-fort-wayne"))
+        # binding.pry
+        rest_cards = @doc.css('div[data-test="restaurant-cards"]')
         # binding.pry
         @scraped_restaurants_array = []
 
