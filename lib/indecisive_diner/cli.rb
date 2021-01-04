@@ -10,7 +10,7 @@ class IndecisiveDiner::CLI
             @location = @location.split(/\s+/)
         end
         # binding.pry
-        if !IndecisiveDiner::Scraper.scrape_url(@location)
+        if !IndecisiveDiner::Scraper.location_check(@location)
             puts "We can't seem to find your location, please enter full location name."
             @location =gets.strip.downcase
             if @location.split(/\s+/).length > 1
@@ -27,9 +27,11 @@ class IndecisiveDiner::CLI
     def sampled_restaurant 
         @sampled_restaurant = IndecisiveDiner::Restaurant.sampled(@location)
         puts <<-DOC.gsub(/^\s+/, "")
+        *
         #{@sampled_restaurant.name}
         #{@sampled_restaurant.cuisine}
         #{@sampled_restaurant.rating}
+        *
         DOC
     end 
 
@@ -51,7 +53,6 @@ class IndecisiveDiner::CLI
                     puts "."
                        count +=1
                   end
-                # !!! PUT TIMER HERE
                 sampled_restaurant
                 puts "Wanna eat here? [yes, no, exit]"
             elsif input == "yes"

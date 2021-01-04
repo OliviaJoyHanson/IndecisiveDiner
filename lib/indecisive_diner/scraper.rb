@@ -4,7 +4,7 @@ require 'open-uri'
 
 class IndecisiveDiner::Scraper 
 
-    def self.scrape_url_check(location)
+    def self.location_check(location)
         @doc = Nokogiri::HTML(URI.open("https://www.opentable.com/nearby/restaurants-near-me-fort-wayne"))
     end 
 
@@ -21,7 +21,9 @@ class IndecisiveDiner::Scraper
             card.children.each do |rest|
                 
                 name = rest.css("a h6").text.split(" ").drop(1).join(" ").strip
-                cuisine = rest.css("._2p0jcmKJSDjEh-wNrLIpzJ").text.split(" ")[1]
+                cuisine_array = rest.css("._2p0jcmKJSDjEh-wNrLIpzJ").text.downcase.split(" ") - location
+                cuisine = cuisine_array.reject {|e| [0, cuisine_array.length - 1].include? cuisine_array.index(e)}.map{|e| e.capitalize}.join(" ")
+                binding.pry
                 rating = rest.css("._2s6ofZ_eiTKuvNHV3mVnaG").text
                 link = rest.css("._1e9PcCDb012hY4BcGfraQB").attr("href").value
                 
