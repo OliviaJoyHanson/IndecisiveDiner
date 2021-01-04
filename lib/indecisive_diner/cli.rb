@@ -3,10 +3,14 @@ class IndecisiveDiner::CLI
     def call
         puts "Welcome, you Indecisive Diner!"
         puts "What's your name?"
-        @name = gets.strip.downcase
+        @name = gets.strip
         puts "What's your location?"
         @location = gets.strip.downcase
-        # @location.split(/\s+/) if @location.split(/\s+/).length > 1
+        # if @location.split(/\s+/).length > 1
+        #     @location.split(/\s+/)
+        # end
+        # if @IndecisiveDiner::Scraper.scrape(@location).length < 2
+        # binding.pry
         #@user = User.new(@name, @location)
         sampled_restaurant
         menu
