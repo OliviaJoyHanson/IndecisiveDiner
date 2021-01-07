@@ -5,21 +5,12 @@ class IndecisiveDiner::CLI
         puts "What's your name?"
         @name = gets.strip
         puts "What's your location?"
-        @location = gets.strip.downcase
-        if @location.split(/\s+/).length > 1
-            @location = @location.split(/\s+/)
-        else
-            @location = [@location]
-        end
+        @location = gets.strip.downcase.split(/\s+/)
+        binding.pry
         # binding.pry
         if !IndecisiveDiner::Scraper.location_check(@location)
             puts "We can't seem to find your location, please remember to enter full location name."
-            @location = gets.strip.downcase
-            if @location.split(/\s+/).length > 1
-                @location.split(/\s+/)
-            else 
-                @location = [@location]
-            end
+            @location = gets.strip.downcase.split(/\s+/)
         end 
         # binding.pry
         #@user = User.new(@name, @location)
