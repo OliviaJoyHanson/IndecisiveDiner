@@ -13,10 +13,12 @@ class IndecisiveDiner::CLI
         end
         # binding.pry
         if !IndecisiveDiner::Scraper.location_check(@location)
-            puts "We can't seem to find your location, please enter full location name."
-            @location =gets.strip.downcase
+            puts "We can't seem to find your location, please remember to enter full location name."
+            @location = gets.strip.downcase
             if @location.split(/\s+/).length > 1
                 @location.split(/\s+/)
+            else 
+                @location = [@location]
             end
         end 
         # binding.pry
@@ -32,7 +34,7 @@ class IndecisiveDiner::CLI
         *
         #{@sampled_restaurant.name}
         #{@sampled_restaurant.cuisine}
-        #{@sampled_restaurant.rating}
+        #{@sampled_restaurant.rating}/5 Stars
         *
         DOC
     end 
@@ -63,20 +65,7 @@ class IndecisiveDiner::CLI
                 puts "[type exit]"
             end
         end 
-        # while input != "exit"
-        #     input = gets.strip.downcase
-        #     if input == "yes"
-        #         puts "Let's make a reservation!"
-        #         puts restaurant_link
-        #     elsif input == "no"
-        #         puts "Let's spin again!"
-        #         puts "Spinning wheel..."
-        #         sampled_restaurant
-        #         puts "Wanna eat here? [yes, no, exit]"
-        #     elsif input != "no" || input != "yes" || input != "exit"
-        #         puts "Didn't quite get that... type yes, no, or exit"
-        #     end 
-        # end
+
     end 
 
     def goodbye 

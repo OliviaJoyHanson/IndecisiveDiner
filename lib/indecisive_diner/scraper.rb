@@ -4,10 +4,25 @@ require 'open-uri'
 
 class IndecisiveDiner::Scraper 
 
+    def self.all_locations
+        location_tab = Nokogiri::HTML(URI.open(""))
+    end 
+
     def self.location_check(location)
-        if location.length <2
-            @doc = Nokogiri::HTML(URI.open("https://www.opentable.com/nearby/restaurants-near-me-#{location.join}"))
-        end 
+        # uri = URI.parse "https://www.opentable.com/nearby/restaurants-near-me-#{location.join}" rescue nil
+        url = URI.parse("https://www.opentable.com/nearby/restaurants-near-me-#{location.join}")
+        Net::HTTP.start(url.host, url.port) do |http|
+            http.head(url.request_uri).code == '200'
+        end
+        rescue
+            false
+        # binding.pry
+        # if location.length <2
+        #     @doc = Nokogiri::HTML(URI.open("https://www.opentable.com/nearby/restaurants-near-me-#{location.join}"))
+        # else
+        #     @doc = Nokogiri::HTML(URI.open("https://www.opentable.com/nearby/restaurants-near-me-fort-wayne"))
+        #     # DEPENDING ON LENGTH OF LOCATION ARRAY (AMOUNT OF WORDS IN LOCATION) WILL NEED TO INSERT DASH (-) BETWEEN EACH WORD IN URL
+        # end 
     end 
 
     def self.scrape(location)
