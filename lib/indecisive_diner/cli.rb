@@ -6,9 +6,8 @@ class IndecisiveDiner::CLI
         @name = gets.strip
         puts "What's your location?"
         @location = gets.strip.downcase.split(/\s+/)
-        binding.pry
         # binding.pry
-        if !IndecisiveDiner::Scraper.location_check(@location)
+        until IndecisiveDiner::Scraper.location_check(@location)
             puts "We can't seem to find your location, please remember to enter full location name."
             @location = gets.strip.downcase.split(/\s+/)
         end 

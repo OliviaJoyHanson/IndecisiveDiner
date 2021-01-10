@@ -1,28 +1,66 @@
 require 'pry'
 require 'nokogiri'
 require 'open-uri'
+require "net/http"
+        
 
 class IndecisiveDiner::Scraper 
 
-    def self.all_locations
-        location_tab = Nokogiri::HTML(URI.open(""))
-    end 
-
     def self.location_check(location)
-        # uri = URI.parse "https://www.opentable.com/nearby/restaurants-near-me-#{location.join}" rescue nil
-        url = URI.parse("https://www.opentable.com/nearby/restaurants-near-me-#{location.join}")
-        Net::HTTP.start(url.host, url.port) do |http|
-            http.head(url.request_uri).code == '200'
-        end
-        rescue
+        url = "https://www.opentable.com/nearby/restaurants-near-me-#{location.join}"
+
+        
+            URI.open(url).status
+        rescue OpenURI::HTTPError
             false
+ 
+
         # binding.pry
-        # if location.length <2
-        #     @doc = Nokogiri::HTML(URI.open("https://www.opentable.com/nearby/restaurants-near-me-#{location.join}"))
-        # else
-        #     @doc = Nokogiri::HTML(URI.open("https://www.opentable.com/nearby/restaurants-near-me-fort-wayne"))
-        #     # DEPENDING ON LENGTH OF LOCATION ARRAY (AMOUNT OF WORDS IN LOCATION) WILL NEED TO INSERT DASH (-) BETWEEN EACH WORD IN URL
-        # end 
+        # Net::HTTP.get_response(url).is_a?(Net::HTTPSuccess)
+
+        # response = HTTParty.get('http://google.com', follow_redirects: true)
+
+        # response = nil
+        # seen = Set.new
+        # loop do
+        #     url = URI.parse(url)
+        #     break if seen.include? url.to_s
+        #     break if seen.size > max_redirects
+        #     seen.add(url.to_s)
+        #     response = Net::HTTP.new(url.host, url.port).request_head(url.path)
+        #     if response.kind_of?(Net::HTTPRedirection)
+        #     url = response['location']
+        #     else
+        #     break
+        #     end
+        # end
+        # response.kind_of?(Net::HTTPSuccess) && url.to_s
+
+        # url = URI.parse(url_string)
+        # req = Net::HTTP.new(url.host, url.port)
+        # req.use_ssl = (url.scheme == 'https')
+        # path = url.path if url.path.present?
+        # res = req.request_head(path || '/')
+        # res.code != "404" # false if returns 404 - not found
+        # rescue Errno::ENOENT
+        # false # false if can't find the server
+
+        # uri = URI.parse(url)
+        # uri.is_a?(URI::HTTP) && !uri.host.nil?
+        # binding.pry
+        # rescue URI::InvalidURIError
+        # false
+
+        # uri = URI.parse(url)
+        # Net::HTTP.start(uri.host, uri.port) do |http|
+        #     binding.pry
+        #     return http.head(uri.request_uri).code == "200"
+        # end
+        
+        # req = Net::HTTP.new(url.host, url.port)
+        # req.use_ssl = true if url.scheme == 'https'
+        # res = req.request_head(url.path)
+ 
     end 
 
     def self.scrape(location)
