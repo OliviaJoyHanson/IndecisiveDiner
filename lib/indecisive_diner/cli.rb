@@ -19,7 +19,8 @@ class IndecisiveDiner::CLI
     end
 
     def sampled_restaurant 
-        @sampled_restaurant = IndecisiveDiner::Restaurant.sampled(@location)
+        scraped = IndecisiveDiner::Restaurant.scraped(@location)
+        @sampled_restaurant = scraped.sample
         puts <<-DOC.gsub(/^\s+/, "")
         *
         #{@sampled_restaurant.name}

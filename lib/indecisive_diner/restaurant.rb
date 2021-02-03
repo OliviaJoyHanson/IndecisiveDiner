@@ -14,14 +14,12 @@ class IndecisiveDiner::Restaurant
   end 
 
   def self.scraped
-    
+
   end 
 
   
-  def self.sampled(location)
-    scraped = IndecisiveDiner::Scraper.scrape(location)
-    sampled_restaurant = scraped.sample
-    sampled_restaurant
+  def self.scraped(location)
+    IndecisiveDiner::Scraper.scrape(location)
     # see if you can use tap method here
   end
 
