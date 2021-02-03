@@ -39,12 +39,6 @@ class IndecisiveDiner::CLI
             if input == "no"
                 puts "Let's spin again!"
                 puts "Spinning wheel"
-                # count = 0
-                # until count == 3
-                #     sleep 1
-                #     puts "."
-                #        count +=1
-                #   end
                 sampled_restaurant
                 puts "Wanna eat here? [yes, no, exit]"
             elsif input == "yes"
