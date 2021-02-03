@@ -1,3 +1,0 @@
-class IndecisiveDiner::User
-
-end 
