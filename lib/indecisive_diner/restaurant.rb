@@ -2,6 +2,8 @@ require 'pry'
 
 class IndecisiveDiner::Restaurant
   attr_accessor :name, :cuisine, :rating, :link
+
+  @all = []
     
 
   def initialize(name, cuisine, rating, link)
@@ -9,6 +11,10 @@ class IndecisiveDiner::Restaurant
     @cuisine = cuisine
     @rating = rating
     @link = link
+  end 
+
+  def self.scraped
+    
   end 
 
   
