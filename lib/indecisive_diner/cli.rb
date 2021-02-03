@@ -6,13 +6,10 @@ class IndecisiveDiner::CLI
         @name = gets.strip
         puts "What's your location?"
         @location = gets.strip.downcase.split(/\s+/)
-        # binding.pry
         until IndecisiveDiner::Scraper.location_check(@location)
             puts "We can't seem to find your location, please remember to enter full location name."
             @location = gets.strip.downcase.split(/\s+/)
         end 
-        # binding.pry
-        #@user = User.new(@name, @location)
         @scraped = IndecisiveDiner::Restaurant.scraped(@location)
         sampled_restaurant
         menu
@@ -54,6 +51,8 @@ class IndecisiveDiner::CLI
                 puts "Let's make a reservation!"
                 restaurant_link
                 puts "[type exit]"
+            else
+                puts "I'm sorry, I do not understand what you mean. Please type yes, no, or exit."
             end
         end 
 

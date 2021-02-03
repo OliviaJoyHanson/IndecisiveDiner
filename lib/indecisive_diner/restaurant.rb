@@ -12,11 +12,6 @@ class IndecisiveDiner::Restaurant
     @rating = rating
     @link = link
   end 
-
-  def self.scraped
-
-  end 
-
   
   def self.scraped(location)
     IndecisiveDiner::Scraper.scrape(location)
