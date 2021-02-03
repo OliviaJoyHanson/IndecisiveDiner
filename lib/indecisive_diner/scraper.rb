@@ -31,7 +31,7 @@ class IndecisiveDiner::Scraper
         end
 
         # binding.pry
-        counter <= doc.css('div._3kGTRpUBze6qgm9OggF-31 ul._1RRLlO4Nj5VOBsZAzSKl8T li._3Y_18dirxSlbwfPU0nr-t_').map{|li| li.text}.pop.to_i
+        counter < doc.css('div._3kGTRpUBze6qgm9OggF-31 ul._1RRLlO4Nj5VOBsZAzSKl8T li._3Y_18dirxSlbwfPU0nr-t_').map{|li| li.text}.pop.to_i
         # <li class="_3Y_18dirxSlbwfPU0nr-t_" data-test="pagination-link"><span class="_2ZZBeg5QBYidoAx28zsMwU G1kfyull_V3y-AuTlAlGm _3Hm0yYcMbrNaW1gTFrK51C">1</span></li>
         #     URI.open(url).status
         # rescue OpenURI::HTTPError

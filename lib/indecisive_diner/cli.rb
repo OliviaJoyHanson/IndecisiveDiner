@@ -13,14 +13,14 @@ class IndecisiveDiner::CLI
         end 
         # binding.pry
         #@user = User.new(@name, @location)
+        @scraped = IndecisiveDiner::Restaurant.scraped(@location)
         sampled_restaurant
         menu
         goodbye
     end
 
-    def sampled_restaurant 
-        scraped = IndecisiveDiner::Restaurant.scraped(@location)
-        @sampled_restaurant = scraped.sample
+    def sampled_restaurant
+        @sampled_restaurant = @scraped.sample
         puts <<-DOC.gsub(/^\s+/, "")
         *
         #{@sampled_restaurant.name}
