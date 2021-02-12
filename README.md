@@ -1,8 +1,6 @@
 # IndecisiveDiner
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/indecisive_diner`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Indecisive Diner chooses, based on your location, a restaurant at random, providing you with the restaurant's name, cuisine category, rating, and link to its Open Table page where you can look at the menu and make a reservation. 
 
 ## Installation
 
@@ -19,10 +17,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install indecisive_diner
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
